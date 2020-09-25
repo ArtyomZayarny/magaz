@@ -1,0 +1,24 @@
+{
+  "products": [
+      {
+        "name":"Macbook Pro 13",
+        "img":"",
+        "description": "Lorem lorem"
+    },
+    {
+        "name":"Macbook Air 13",
+        "img":"",
+        "description": "Lorem lorem"
+    },
+    {
+        "name":"Macbook Pro 15",
+        "img":"",
+        "description": "Lorem lorem"
+    },
+    {
+        "name":"Macbook Pro 17",
+        "img":"",
+        "description": "Lorem lorem"
+    }
+]
+}

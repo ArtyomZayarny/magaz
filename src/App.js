@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect} from 'react';
+import logo from './logo-os.png'
 import './App.css';
+import catalog from './catalog.json'
 
 function App() {
+
+  useEffect( () => {
+console.log(catalog)
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <header className="">
+         <div className="logo">
+           <img src={logo} alt="logo"/>
+         </div>
+       </header>
+       <main>
+         <h2>Catalog</h2>
+         <ul>
+         { catalog.products.map( (product,index) => {
+               return <li key={index}>{product.name}</li>
+             })
+          } 
+         </ul>
+       </main>
     </div>
   );
 }
