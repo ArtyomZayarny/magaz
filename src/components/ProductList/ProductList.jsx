@@ -4,6 +4,8 @@ import ProductsInfo from '../ProductList/ProductsInfo';
 import catalog from '../../catalog.json';
 import styles from './ProductList.module.css';
 
+const LS = localStorage;
+
 
 export default function ProductList() {
     const [data,setData] = useState({
@@ -11,10 +13,20 @@ export default function ProductList() {
     }) 
 
     useEffect( () => {
-        if(data.products.length === 0) {
-            setData({...data,products:catalog.products})
+        
+        if (LS.getItem('products') === null) {
+            console.log(catalog.products)
+            LS.setItem('products', JSON.stringify(catalog.products))
         }
-    }, []);
+        //Fetch products from LS
+        const products = JSON.parse(LS.getItem('products'));
+
+        if (data.products.length === 0) {
+            setData({...data, products})
+        }
+        
+    
+    }, [data]);
    const deleteProduct = (id) => {
         setData({...data,products:data.products.filter( product => product.id !== id)})
    }
