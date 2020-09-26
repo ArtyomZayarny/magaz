@@ -1,25 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Header from './components/Header/Header'
 import './App.css';
-import catalog from './catalog.json'
+import Catalog from './components/Catalog/Catalog';
 
 function App() {
 
-  useEffect( () => {
-console.log(catalog)
-  }, []);
-
   return (
     <div className="App">
-       <Header />
+        <Header />
        <main>
-         <h2>Catalog</h2>
-         <ul>
-         { catalog.products.map( (product,index) => {
-               return <li key={index}>{product.name}</li>
-             })
-          } 
-         </ul>
+          <Catalog />
        </main>
     </div>
   );
