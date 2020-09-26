@@ -19,7 +19,6 @@ export default function ProductList() {
         setData({...data,products:data.products.filter( product => product.id !== id)})
    }
    const calcTotalSum = (products) => {
-        let totalSum = 0;
         const reducer = (accumulator, currentValue) => accumulator + parseInt(currentValue.price);
         return products.reduce(reducer,0)
    }
