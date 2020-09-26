@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import ProductCard from '../Product/ProductCard';
+import ProductsInfo from '../ProductList/ProductsInfo';
 import catalog from '../../catalog.json';
 import styles from './ProductList.module.css';
-import Button from '@material-ui/core/Button';
+
 
 export default function ProductList() {
     const [data,setData] = useState({
@@ -28,17 +29,18 @@ export default function ProductList() {
         const average = +(totalSum / amount).toFixed(2);
         return average;
    }
+   const deleteAll = () => setData({...data, products:[]})
 
     return (
         <>
         {data.products.length > 0 ?
         <>
-            <div className={styles.general}>
-                <span className={styles.generalItem}><b>Total products: </b>{data.products.length}</span> 
-                <span className={styles.generalItem}><b>Total sum: </b>{calcTotalSum(data.products)} $</span>
-                <span className={styles.generalItem}><b>Average price: {calcAveragePrice(data.products)}</b></span>
-                <Button className={styles.delete} variant="contained" onClick={() => {setData({...data,products:[]})} }>Delete All</Button>
-            </div>
+            <ProductsInfo 
+                totalAmount={data.products.length}
+                totalSum={calcTotalSum(data.products)}
+                averagePrice={calcAveragePrice(data.products)}
+                deleteAll={deleteAll}
+            />
             <ul className={styles.grid}>
                         {data.products.map( (product) => {
                         return  <li key={product.id}>
