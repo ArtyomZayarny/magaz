@@ -1,35 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import ProductCard from '../Product/ProductCard';
 import ProductsInfo from '../ProductList/ProductsInfo';
-import catalog from '../../catalog.json';
 import styles from './ProductList.module.css';
 
-const LS = localStorage;
-
-
-export default function ProductList() {
-    const [data,setData] = useState({
-        products:[],
-    }) 
-
-    useEffect( () => {
-        
-        if (LS.getItem('products') === null) {
-            console.log(catalog.products)
-            LS.setItem('products', JSON.stringify(catalog.products))
-        }
-        //Fetch products from LS
-        const products = JSON.parse(LS.getItem('products'));
-
-        if (data.products.length === 0) {
-            setData({...data, products})
-        }
-        
-    
-    }, [data]);
-   const deleteProduct = (id) => {
-        setData({...data,products:data.products.filter( product => product.id !== id)})
-   }
+export default function ProductList({products,deleteAll,deleteProduct, ...props}) {
+   
+   
    const calcTotalSum = (products) => {
         const reducer = (accumulator, currentValue) => accumulator + parseInt(currentValue.price);
         return products.reduce(reducer,0)
@@ -40,20 +16,19 @@ export default function ProductList() {
         const average = +(totalSum / amount).toFixed(2);
         return average;
    }
-   const deleteAll = () => setData({...data, products:[]})
 
     return (
         <>
-        {data.products.length > 0 ?
+        {products.length > 0 ?
         <>
             <ProductsInfo 
-                totalAmount={data.products.length}
-                totalSum={calcTotalSum(data.products)}
-                averagePrice={calcAveragePrice(data.products)}
+                totalAmount={products.length}
+                totalSum={calcTotalSum(products)}
+                averagePrice={calcAveragePrice(products)}
                 deleteAll={deleteAll}
             />
             <ul className={styles.grid}>
-                        {data.products.map( (product) => {
+                        {products.map( (product) => {
                         return  <li key={product.id}>
                                     <ProductCard
                                         id={product.id}
