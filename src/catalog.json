@@ -1,23 +1,31 @@
 {
   "products": [
       {
+        "id":"21",
         "name":"Macbook Pro 13",
         "img":"./images/pro13.jpg",
+        "price": "2000.99",
         "description": "The base 13-inch MacBook Pro comes with a 1.4GHz quad-core 8th generation Intel Core i5 processor, Intel Iris Plus Graphics 645, 8GB 2133MHz LPDDR3 memory."
     },
     {
+        "id":"22",
         "name":"Macbook Air 13",
         "img":"./images/air13.jpg",
+        "price": "1200.33",
         "description": "Apple Macbook Air 13 128GB Brief Description. The Apple MacBook Air 13 128GB Laptop has an elegant unibody aluminum design that looks very stylish."
     },
     {
+        "id":"23",
         "name":"Macbook Pro 15",
         "img":"./images/pro15.jpg",
+        "price": "4500.33",
         "description": "The 15-inch MacBook Pro was released in June 2019 starting at $2,399. The base model includes a 9th-generation Intel Core i7 processor, 16GB of memory."
     },
     {
+        "id":"24",
         "name":"Macbook Pro 17",
         "img":"./images/pro17.jpg",
+        "price": "2500.99",
         "description": "MacBook Pro is designed with the following features to reduce its environmental impact: Highly recyclable aluminum and glass enclosure. Mercury-free LED-backlit display."
     }
 ]

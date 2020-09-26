@@ -1,0 +1,10 @@
+.delete:hover {
+    cursor:pointer;
+}
+.delete {
+    margin: 5px;
+}
+.btnArea {
+    display: flex;
+    justify-content: flex-end;
+}

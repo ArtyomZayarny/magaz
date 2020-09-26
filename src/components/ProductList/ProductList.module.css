@@ -1,0 +1,18 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 40px;
+}
+.general {
+    padding:15px 0;
+}
+.generalItem:first-child{
+    margin-left: 0;
+}
+.generalItem {
+    display:inline-block;
+    margin-left: 20px;
+}
+.general .delete {
+    margin-left: 20px;
+}
