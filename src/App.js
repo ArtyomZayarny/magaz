@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import logo from './logo-os.png'
+import Header from './components/Header/Header'
 import './App.css';
 import catalog from './catalog.json'
 
@@ -11,11 +11,7 @@ console.log(catalog)
 
   return (
     <div className="App">
-       <header className="">
-         <div className="logo">
-           <img src={logo} alt="logo"/>
-         </div>
-       </header>
+       <Header />
        <main>
          <h2>Catalog</h2>
          <ul>
