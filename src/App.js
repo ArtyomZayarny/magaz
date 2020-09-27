@@ -9,6 +9,9 @@ import {
   Switch,
   Route
 } from "react-router-dom";
+const shortid = require('shortid');
+
+const LS = localStorage;
 
 function App() {
 
@@ -38,7 +41,22 @@ const deleteProduct = (id) => {
  
 }
 const addProduct = (product) => {
-  console.log('add')
+    product.id = shortid.generate();
+  //First product
+  if (LS.getItem('products') === null) {
+    const productsList = [];
+    productsList.push(product);
+    LS.setItem('products',JSON.stringify(productsList));
+  } else {
+    //Check if ls includes some products
+    const products = JSON.parse(LS.getItem('products'));
+    //Add new product
+    products.push(product);
+    //Write to ls updated productslist
+    LS.setItem('products', JSON.stringify(products))
+  }
+ 
+   
 }
   return (
     <div className="App">
@@ -50,7 +68,11 @@ const addProduct = (product) => {
                 <AddProductPage addProduct={addProduct}/>
             </Route>
             <Route path="/">
-                <Catalog products={data.products} deleteAll={deleteAll} deleteProduct={deleteProduct}/>
+                <Catalog 
+                  products={data.products}
+                  deleteAll={deleteAll} 
+                  deleteProduct={deleteProduct}
+                />
             </Route>
           </Switch> 
         </main>

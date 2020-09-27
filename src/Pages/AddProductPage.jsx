@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     
   });
 
-export default function AddProductPage() {
+export default function AddProductPage({addProduct, ...props}) {
     const classes = useStyles();
     const [product,setProduct] = useState({
         name:'',
@@ -34,10 +34,11 @@ export default function AddProductPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-       //localStorage
+        addProduct(product);
+        //Clear form
+        setProduct({...product, name:'', description:''})
     }
     
-
     return (
         <div className="container">
           <h3>Add  New Product</h3>
