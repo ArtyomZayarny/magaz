@@ -2,9 +2,13 @@ import React from 'react';
 import ProductCard from '../Product/ProductCard';
 import ProductsInfo from '../ProductList/ProductsInfo';
 import styles from './ProductList.module.css';
+import {useSelector } from 'react-redux';
 
-export default function ProductList({products,deleteAll,deleteProduct, ...props}) {
-   
+
+export default function ProductList() {
+
+   const products =  useSelector(state => state.products);
+
    
    const calcTotalSum = (products) => {
         const reducer = (accumulator, currentValue) => accumulator + parseInt(currentValue.price);
@@ -25,7 +29,6 @@ export default function ProductList({products,deleteAll,deleteProduct, ...props}
                 totalAmount={products.length}
                 totalSum={calcTotalSum(products)}
                 averagePrice={calcAveragePrice(products)}
-                deleteAll={deleteAll}
             />
             <ul className={styles.grid}>
                         {products.map( (product) => {
@@ -35,7 +38,6 @@ export default function ProductList({products,deleteAll,deleteProduct, ...props}
                                         imgUrl={product.img} 
                                         name={product.name}
                                         price={product.price} 
-                                        deleteProduct={deleteProduct}
                                         description={product.description}/>
                                 </li>
                         })
