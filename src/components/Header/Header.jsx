@@ -12,7 +12,7 @@ export default function Header() {
             <div className={styles.content}>
               <Link to="/">
                 <div className="logo">
-                  <img src={logo} alt="logo"/>
+                  <h1><Link to="/">MAGAZ</Link></h1>
                 </div>
               </Link>
               <Navigation />
